@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aelena.ServiceWrapper", "Ae
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AElena.ServiceWrapper.SampleService", "SampleService\AElena.ServiceWrapper.ISampleService\AElena.ServiceWrapper.SampleService.csproj", "{4026DF3B-B751-433F-A966-F5E1BF9A4789}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aelena.ServiceWrapper.Tests", "Tests\Aelena.ServiceWrapper.Tests\Aelena.ServiceWrapper.Tests.csproj", "{3BDBB813-AF58-42DA-A903-6842C258AF2C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{4026DF3B-B751-433F-A966-F5E1BF9A4789}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4026DF3B-B751-433F-A966-F5E1BF9A4789}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4026DF3B-B751-433F-A966-F5E1BF9A4789}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BDBB813-AF58-42DA-A903-6842C258AF2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BDBB813-AF58-42DA-A903-6842C258AF2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BDBB813-AF58-42DA-A903-6842C258AF2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BDBB813-AF58-42DA-A903-6842C258AF2C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
