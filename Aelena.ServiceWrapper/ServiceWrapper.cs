@@ -41,7 +41,7 @@ namespace Aelena.ServiceWrapper
         // --------------------------------------------------------------------------------------------------
 
 
-        public static TReturn Use<TReturn> ( Func<T, TReturn> code, ChannelFactory<T> channelFactory )
+        public static TReturn Use<TReturn> ( Func<T, TReturn> code, ChannelFactory<T> channelFactory, string url )
         {
 
             if ( channelFactory == null )
@@ -49,7 +49,7 @@ namespace Aelena.ServiceWrapper
 
 
 
-            var proxy = ( IClientChannel ) channelFactory.CreateChannel ();
+            var proxy = ( IClientChannel ) channelFactory.CreateChannel ( new EndpointAddress ( new Uri ( url ) ) );
             bool success = false;
 
             try

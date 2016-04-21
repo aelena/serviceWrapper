@@ -83,7 +83,17 @@ namespace Aelena.ServiceWrapper.Tests
         }
 
 
+        [Fact]
+        public void Should_Call_Service_Using_Wrapper_2 ()
+        {
+            using ( var factory = new ChannelFactory<ISampleService> ( "sampleServiceEndpoint" ) )
+            {
+                var response = ServiceWrapper<ISampleService>.Use<String> ( _ =>
+                             _.UpdateStatus ( "John", 2 ), factory, testUrl );
+                response.Should ().Be ( "Entity 'John' has been updated to status 2" );
 
+            }
+        }
 
 
         public void Dispose ()
