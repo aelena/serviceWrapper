@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle ( "AElena.ServiceWrapper.ISampleService" )]
+[assembly: AssemblyTitle ( "AElena.ServiceWrapper.SampleService" )]
 [assembly: AssemblyDescription ( "" )]
 [assembly: AssemblyConfiguration ( "" )]
 [assembly: AssemblyCompany ( "Microsoft" )]
-[assembly: AssemblyProduct ( "AElena.ServiceWrapper.ISampleService" )]
-[assembly: AssemblyCopyright ( "Copyright © Microsoft 2016" )]
+[assembly: AssemblyProduct ( "AElena.ServiceWrapper.SampleService" )]
+[assembly: AssemblyCopyright ( "Copyright © Aelena 2016" )]
 [assembly: AssemblyTrademark ( "" )]
 [assembly: AssemblyCulture ( "" )]
 
