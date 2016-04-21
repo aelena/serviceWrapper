@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
+using System.ServiceModel.Channels;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,7 +10,6 @@ namespace Aelena.ServiceWrapper
 {
     public sealed class ServiceWrapper<T>
     {
-
 
         public static TReturn Use<TReturn> ( Func<T, TReturn> code, IClientChannel channel )
         {
