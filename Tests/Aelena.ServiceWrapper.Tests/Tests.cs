@@ -41,11 +41,8 @@ namespace Aelena.ServiceWrapper.Tests
             try
             {
                 this.output.WriteLine ( "Server started" );
-
                 if ( !Process.GetProcesses ().Any ( p => p.ProcessName == "WcfSvcHost" ) )
                     wcfTestClientProcess = Process.Start ( wcfSvcHostPath, wcfSvcHostPara );
-
-
             }
             catch ( Exception ex )
             {
@@ -83,6 +80,26 @@ namespace Aelena.ServiceWrapper.Tests
                              _.UpdateStatus ( "John", 2 ), factory, testUrl );
                 response.Should ().Be ( "Entity 'John' has been updated to status 2" );
 
+            }
+        }
+
+
+        // --------------------------------------------------------------------------------------------------
+
+
+        [Theory]
+        [InlineData ( 1, "Paul", "the Crazy Guild" )]
+        [InlineData ( 2, "John", "The master werkers" )]
+        [InlineData ( 4, "John", "The master werkers" )]
+        public void Should_Call_Service_Returning_Class_Instance_Using_Wrapper_With_Factory ( int id, string expectedName, string expectedCompany )
+        {
+            using ( var factory = new ChannelFactory<ISampleService> ( "sampleServiceEndpoint" ) )
+            {
+                var response = ServiceWrapper<ISampleService>.Use<Client> ( _ =>
+                             _.GetClient ( id ), factory, testUrl );
+                response.Id.Should ().Be ( id );
+                response.Name.Should ().Be ( expectedName );
+                response.Company.Should ().Be ( expectedCompany );
             }
         }
 
