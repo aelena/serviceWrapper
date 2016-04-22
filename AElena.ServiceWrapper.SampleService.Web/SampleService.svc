@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="AElena.ServiceWrapper.SampleService.SampleService" CodeBehind="SampleService.cs" %>
