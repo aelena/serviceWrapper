@@ -43,7 +43,18 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceWrapper.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Deployable\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>if $(ConfigurationName) == Release (
+    echo "Copy to 'Deployables' folder".
+    xcopy "$(TargetDir)*.dll" "..\..\Deployable\*.*" /Y
+    xcopy "$(TargetDir)*.pdb" "..\..\Deployable\*.*" /Y
+)
+echo  $(ConfigurationName)</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
