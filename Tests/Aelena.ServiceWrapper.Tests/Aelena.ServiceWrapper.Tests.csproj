@@ -74,6 +74,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\SampleServiceAsSvcRef2\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -92,6 +97,23 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\SampleServiceAsSvcRef1\SampleService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SampleServiceAsSvcRef2\Aelena.ServiceWrapper.Tests.SampleServiceAsSvcRef2.GetClientResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SampleServiceAsSvcRef2\Aelena.ServiceWrapper.Tests.SampleServiceAsSvcRef2.UpdateStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SampleServiceAsSvcRef2\SampleService.wsdl" />
+    <None Include="Service References\SampleServiceAsSvcRef2\SampleService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SampleServiceAsSvcRef2\SampleService1.wsdl" />
+    <None Include="Service References\SampleServiceAsSvcRef2\SampleService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SampleServiceAsSvcRef2\SampleService2.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
@@ -113,6 +135,7 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\SampleServiceAsSvcRef1\" />
+    <WCFMetadataStorage Include="Service References\SampleServiceAsSvcRef2\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\SampleServiceAsSvcRef1\SampleService.disco" />
@@ -125,6 +148,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\SampleServiceAsSvcRef1\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SampleServiceAsSvcRef2\SampleService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SampleServiceAsSvcRef2\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SampleServiceAsSvcRef2\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SampleServiceAsSvcRef2\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

@@ -22,6 +22,7 @@ namespace Aelena.ServiceWrapper.Tests
 
         private const string _endpointNameForUpdateService = "sampleServiceEndpoint";
         private const string _endpointNameForUpdateServiceWithWsdl = "sampleServiceWsdlEndpoint";
+        private const string _endpointNameForUpdateServiceWithWsdlAndMessages = "sampleServiceWsdlEndpointWithMessages";
 
 
         private readonly string testUrl = @"http://localhost:8733/Design_Time_Addresses/AElena.ServiceWrapper.SampleService/SampleService";
@@ -136,6 +137,43 @@ namespace Aelena.ServiceWrapper.Tests
 
 
         // --------------------------------------------------------------------------------------------------
+
+
+
+        [Fact]
+        public void Should_Call_Service_Via_Wrapper_And_Standard_Svc_Proxy_With_Messages ()
+        {
+            var proxy = new SampleServiceAsSvcRef2.SampleServiceClient ();
+            var response = ServiceWrapper<SampleServiceAsSvcRef2.ISampleService>.Use<SampleServiceAsSvcRef2.UpdateStatusResponse> (
+                _ => proxy.UpdateStatus ( new SampleServiceAsSvcRef2.UpdateStatusRequest ( "Frank", 5 ) ),
+                            Tests._endpointNameForUpdateServiceWithWsdlAndMessages );
+
+            response.UpdateStatusResult.Should ().Be ( "Entity 'Frank' has been updated to status 5" );
+        }
+
+
+        // --------------------------------------------------------------------------------------------------
+
+
+        [Theory]
+        [InlineData ( 1, "Paul", "the Crazy Guild" )]
+        [InlineData ( 2, "John", "The master werkers" )]
+        [InlineData ( 4, "John", "The master werkers" )]
+        public void Should_Call_Service_Via_Wrapper_And_Standard_Svc_Proxy_With_Messages_2 ( int id, string expectedName, string expectedCompany )
+        {
+            var proxy = new SampleServiceAsSvcRef2.SampleServiceClient ();
+            var response = ServiceWrapper<SampleServiceAsSvcRef2.ISampleService>.Use<SampleServiceAsSvcRef2.GetClientResponse> (
+                _ => proxy.GetClient ( new SampleServiceAsSvcRef2.GetClientRequest ( id ) ), 
+                            Tests._endpointNameForUpdateServiceWithWsdlAndMessages );
+
+            response.GetClientResult.Id.Should ().Be ( id );
+            response.GetClientResult.Name.Should ().Be ( expectedName );
+            response.GetClientResult.Company.Should ().Be ( expectedCompany );
+        }
+
+
+        // --------------------------------------------------------------------------------------------------
+
 
         public void Dispose ()
         {
