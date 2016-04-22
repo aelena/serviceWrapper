@@ -1,27 +1,17 @@
 ﻿using AElena.ServiceWrapper.SampleService;
-using CassiniDev;
+using FluentAssertions;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Net;
 using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 using Xunit.Abstractions;
-using FluentAssertions;
 
 namespace Aelena.ServiceWrapper.Tests
 {
     public class Tests : IDisposable
     {
 
-        /// <summary>
-        /// CassiniDev, an open source library that allows to run a lightweight ASP.NET web server in process, 
-        /// which is especially useful for unit testing scenarios
-        /// </summary>
-        private readonly CassiniDevServer host;
         /// <summary>
         /// Capture output
         /// <remarks>
@@ -38,10 +28,10 @@ namespace Aelena.ServiceWrapper.Tests
 
         private const string wcfSvcHostPath = @"C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\WcfSvcHost.exe";
 
-        // the AElena.ServiceWrapper.SampleService's App.Config "Copy to Output Directory" property
-        // must be set set to "Copy always" to ensure both files are available for WcfSvcHost
         private const string wcfSvcHostPara = @"/service:AElena.ServiceWrapper.SampleService.dll /config:App.Config";
 
+
+        // --------------------------------------------------------------------------------------------------
 
 
         public Tests ( ITestOutputHelper output )
@@ -50,11 +40,7 @@ namespace Aelena.ServiceWrapper.Tests
 
             try
             {
-                //host = new CassiniDevServer ();
-                //host.StartServer ( @"..\..\SampleService\AElena.ServiceWrapper.ISampleService", 8080, "/", "localhost" );
-                //this.output.WriteLine ( "Server started" );
-
-
+                this.output.WriteLine ( "Server started" );
 
                 if ( !Process.GetProcesses ().Any ( p => p.ProcessName == "WcfSvcHost" ) )
                     wcfTestClientProcess = Process.Start ( wcfSvcHostPath, wcfSvcHostPara );
@@ -69,9 +55,11 @@ namespace Aelena.ServiceWrapper.Tests
         }
 
 
+        // --------------------------------------------------------------------------------------------------
+
 
         [Fact]
-        public void Should_Call_Service_Using_Wrapper ()
+        public void Should_Call_Service_Using_Factory ()
         {
             using ( var factory = new ChannelFactory<ISampleService> ( "sampleServiceEndpoint" ) )
             {
@@ -83,8 +71,11 @@ namespace Aelena.ServiceWrapper.Tests
         }
 
 
+        // --------------------------------------------------------------------------------------------------
+
+
         [Fact]
-        public void Should_Call_Service_Using_Wrapper_2 ()
+        public void Should_Call_Service_Using_Wrapper_With_Factory ()
         {
             using ( var factory = new ChannelFactory<ISampleService> ( "sampleServiceEndpoint" ) )
             {
@@ -96,16 +87,17 @@ namespace Aelena.ServiceWrapper.Tests
         }
 
 
+        // --------------------------------------------------------------------------------------------------
+
+
         public void Dispose ()
         {
             try
             {
-                if ( host != null )
-                    host.StopServer ();
-                this.output.WriteLine ( "Server stopped" );
-
                 if ( wcfTestClientProcess != null )
                     wcfTestClientProcess.Kill ();
+
+                this.output.WriteLine ( "Server stopped" );
 
             }
             catch ( Exception ex )
@@ -114,5 +106,9 @@ namespace Aelena.ServiceWrapper.Tests
                 this.output.WriteLine ( ex.ToString () );
             }
         }
+
+
+        // --------------------------------------------------------------------------------------------------
+
     }
 }
