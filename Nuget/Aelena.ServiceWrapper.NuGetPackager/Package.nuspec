@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>Aelena.ServiceWrapper.NuGetPackager</id>
-    <version>1.1.0</version>
-    <title>Aelena.ServiceWrapper.NuGetPackager</title>
+    <id>Aelena.ServiceWrapper</id>
+    <version>1.0.0</version>
+    <title>Aelena.ServiceWrapper</title>
     <authors>Antonio Elena (aelena)</authors>
     <owners>Antonio Elena</owners>
     <description>
