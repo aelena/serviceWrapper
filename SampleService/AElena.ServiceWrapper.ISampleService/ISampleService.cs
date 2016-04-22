@@ -16,5 +16,8 @@ namespace AElena.ServiceWrapper.SampleService
         [OperationContract]
         string UpdateStatus ( string myID, int myStatus );
 
+        [OperationContract]
+        Client GetClient ( int id );
+
     }
 }

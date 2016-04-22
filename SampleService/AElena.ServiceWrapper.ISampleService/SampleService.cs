@@ -15,5 +15,18 @@ namespace AElena.ServiceWrapper.SampleService
         {
             return String.Format ( "Entity '{0}' has been updated to status {1}", myID, myStatus );
         }
+
+
+        // --------------------------------------------------------------------------------------------------
+
+
+        public Client GetClient ( int id )
+        {
+            return new Client ( id % 2 == 0 ? "John" : "Paul",
+                id,
+                id % 2 == 0 ? "The master werkers" : "the Crazy Guild",
+                new Random ( DateTime.UtcNow.Millisecond ).NextDouble () * 10000 );
+
+        }
     }
 }
