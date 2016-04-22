@@ -8,6 +8,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AElena.ServiceWrapper.SampleService", "SampleService\AElena.ServiceWrapper.ISampleService\AElena.ServiceWrapper.SampleService.csproj", "{4026DF3B-B751-433F-A966-F5E1BF9A4789}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aelena.ServiceWrapper.Tests", "Tests\Aelena.ServiceWrapper.Tests\Aelena.ServiceWrapper.Tests.csproj", "{3BDBB813-AF58-42DA-A903-6842C258AF2C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E1D74E51-843C-4210-9190-13BD6F6F737B} = {E1D74E51-843C-4210-9190-13BD6F6F737B}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AElena.ServiceWrapper.SampleService.Web", "AElena.ServiceWrapper.SampleService.Web\AElena.ServiceWrapper.SampleService.Web.csproj", "{E1D74E51-843C-4210-9190-13BD6F6F737B}"
 EndProject
